@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 
 //Icons
@@ -23,17 +23,6 @@ const Container = styled.div({
 
 //Main component content
 const PlayControl = (): JSX.Element => {
-
-	//DUMMY STATE
-	const [ isPlaying, setIsPlaying ] = useState<boolean>(false);
-
-
-	//Updates play state
-	const isPlayingHandler = () => {
-		setIsPlaying( (prevState: boolean) => !prevState );
-	};
-
-
 	//Main component render
 	return (
 		<Container id='song-controls' >
@@ -46,10 +35,9 @@ const PlayControl = (): JSX.Element => {
 				/>
 			</IconButton>
 			<IconButton id='play-pause-button'
-				onClick={isPlayingHandler}
 				disabled={true}
 			>
-				{isPlaying ? (
+				{false ? (
 					<BiPause
 						fontSize='2.5em'
 						color='rgba(0, 0, 0, 0.75)'
