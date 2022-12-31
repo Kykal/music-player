@@ -46,10 +46,10 @@ const ParagraphSx = styled.p({
 	'& a': {
 		marginRight: '0.5em',
 	},
-	'&#song-name': {
+	'&#song-name > *': {
 		color: 'var(--strong-gray)',
 	},
-	'&#song-author': {
+	'&#song-author > *': {
 		color: 'var(--gray)',
 	},
 });

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 
 //Icons
@@ -23,28 +23,21 @@ const Container = styled.div({
 
 //Main component content
 const PlayControl = (): JSX.Element => {
-
-	//DUMMY STATE
-	const [ isPlaying, setIsPlaying ] = useState<boolean>(false);
-
-
-	//Updates play state
-	const isPlayingHandler = () => {
-		setIsPlaying( (prevState: boolean) => !prevState );
-	};
-
-
 	//Main component render
 	return (
 		<Container id='song-controls' >
-			<IconButton id='backwards-button' >
+			<IconButton id='backwards-button'
+				disabled={true}
+			>
 				<AiFillStepBackward
 					fontSize='1.75em'
 					color='rgba(0, 0, 0, 0.75)'
 				/>
 			</IconButton>
-			<IconButton id='play-pause-button' onClick={isPlayingHandler} >
-				{isPlaying ? (
+			<IconButton id='play-pause-button'
+				disabled={true}
+			>
+				{false ? (
 					<BiPause
 						fontSize='2.5em'
 						color='rgba(0, 0, 0, 0.75)'
@@ -56,7 +49,9 @@ const PlayControl = (): JSX.Element => {
 					/>
 				)}
 			</IconButton>
-			<IconButton id='forward-button' >
+			<IconButton id='forward-button'
+				disabled={true}
+			>
 				<AiFillStepForward
 					fontSize='1.75em'
 					color='rgba(0, 0, 0, 0.75)'

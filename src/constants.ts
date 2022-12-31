@@ -4,8 +4,12 @@ import ILocalCurrentSong from "./interfaces/ILocalCurrentSong";
 export const CURRENT_SONG_INIT: ICurrentSong = {
 	id: '',
 	url: '',
+	thumbnailUrl: '',
 	name: '',
-	author: '',
+	author: {
+		name: '',
+		url: '',
+	},
 }
 
 export const LOCAL_CURRENT_SONG_INIT: ILocalCurrentSong = {

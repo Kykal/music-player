@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
 
 //Components
@@ -39,7 +39,6 @@ const AudioPlayer = (): JSX.Element => {
 				a
 			</div>
 			<audio
-				src={''}
 				
 			/>
 		</Container>

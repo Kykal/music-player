@@ -21,6 +21,17 @@ const ButtonSx = styled.button({
 	'&:active': {
 		backgroundColor: 'var(--light-gray)',
 	},
+
+	'&:disabled': {
+		cursor: 'not-allowed',
+		'&:hover': {
+			backgroundColor: 'transparent',
+		},
+
+		'& svg': {
+			color: 'var(--ultra-light-gray) !important',
+		},
+	}
 });
 
 
@@ -29,6 +40,7 @@ interface IProps {
 	children?: ReactNode;
 	onClick?: () => void;
 	id?: string;
+	disabled?: boolean;
 }
 
 //Main component content
@@ -37,6 +49,7 @@ const IconButton = (props: IProps): JSX.Element => {
 	return (
 		<ButtonSx id={props.id}
 			onClick={props.onClick}
+			disabled={props.disabled}
 		>
 			{props.children}
 		</ButtonSx>
