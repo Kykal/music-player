@@ -14,9 +14,9 @@ const Container = styled.div({
 	zIndex: 1,
 	bottom: 0,
 	width: '100vw',
-	padding: '0.5em',
+	padding: '0.75em',
 	boxShadow: '0 -0.25em 0.25em var(--gray)',
-	height: '5em',
+	height: '5.5em',
 
 	display: 'grid',
 	gridTemplateColumns: 'repeat(3, 1fr)',
