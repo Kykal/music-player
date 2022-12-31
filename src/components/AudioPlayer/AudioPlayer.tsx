@@ -4,6 +4,8 @@ import React from 'react';
 //Components
 import PlayControl	from './components/PlayControl';
 import SongDisplay	from './components/SongDisplay';
+import SliderRange	from './components/SliderRange';
+
 
 //Styled components
 import styled from 'styled-components';
@@ -11,35 +13,43 @@ import styled from 'styled-components';
 
 const Container = styled.div({
 	position: 'absolute',
-	zIndex: 1,
 	bottom: 0,
 	width: '100vw',
-	padding: '0.75em',
-	boxShadow: '0 -0.25em 0.25em var(--ultra-light-gray)',
-	height: '5.5em',
-
-	display: 'grid',
-	gridTemplateColumns: 'repeat(3, 1fr)',
-	overflow: 'hidden',
-
-	'& > *': {
-		zIndex: 2,
-	}
 });
 
+
+const AudioTrack = styled.div({
+	width: '100%',
+});
+
+
+const AudioTable = styled.div({
+	padding: '0.5em',
+	height: '5em',
+	display: 'flex',
+	'& div:is(#song-display, #song-controls)': {
+		width: '33%',
+	}
+}); 
 
 //Main component content
 const AudioPlayer = (): JSX.Element => {
 	//Main component render
 	return (
 		<Container id='audio-player' >
-			<SongDisplay />
-			<PlayControl />
-			<div>
-				a
-			</div>
+			<AudioTrack>
+				<SliderRange />
+			</AudioTrack>
+			<AudioTable>
+				<SongDisplay />
+				<PlayControl />
+				<div>
+					a
+				</div>
+			</AudioTable>
 			<audio
-				
+				preload='metadata'
+				src=''
 			/>
 		</Container>
 	);
