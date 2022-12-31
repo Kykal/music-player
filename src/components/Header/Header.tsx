@@ -13,7 +13,7 @@ const HeaderSx = styled.header({
 	position: 'relative',
 	padding: '1em',
 	height: '4em',
-	boxShadow: '0 0.25em 0.25em var(--gray)',
+	boxShadow: '0 0.25em 0.25em var(--ultra-light-gray)',
 	
 	display: 'grid',
 	gridTemplateColumns: 'repeat(3, 1fr)',

@@ -2,15 +2,21 @@
 	{
 		"id": "95436",
 		"url": "https://pixabay.com/music/synthwave-mezhdunami-flashes-95436/",
-		"thumbnai": "https://cdn.pixabay.com/audio/2022/09/19/20-10-55-531_200x200.jpg",
+		"thumbnailUrl": "https://cdn.pixabay.com/audio/2022/09/19/20-10-55-531_200x200.jpg",
 		"name": "Flashes",
-		"artist": "Mezhdunami"
+		"artist": {
+			"name": "Mezhdunami",
+			"url": "https://pixabay.com/users/mezhdunami-12153402/"
+		}
 	},
 	{
 		"id": "1198",
 		"url": "https://pixabay.com/music/beats-mezhdunami-uncut-gems-1198/",
-		"thumbail": "https://cdn.pixabay.com/audio/2022/09/19/20-13-28-716_200x200.jpg",
+		"thumbnailUrl": "https://cdn.pixabay.com/audio/2022/09/19/20-13-28-716_200x200.jpg",
 		"name": "Uncut gems",
-		"artist": "Mezhdunami"
+		"artist": {
+			"name": "Mezhdunami",
+			"url": "https://pixabay.com/users/mezhdunami-12153402/"
+		}
 	}
 ]

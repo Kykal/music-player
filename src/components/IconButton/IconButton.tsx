@@ -16,7 +16,7 @@ const ButtonSx = styled.button({
 	cursor: 'pointer',
 
 	'&:hover': {
-		backgroundColor: 'var(--gray)',
+		backgroundColor: 'var(--ultra-light-gray)',
 	},
 	'&:active': {
 		backgroundColor: 'rgba(0, 0, 0, 0.25)',
@@ -28,13 +28,14 @@ const ButtonSx = styled.button({
 interface IProps {
 	children?: ReactNode;
 	onClick?: () => void;
+	id?: string;
 }
 
 //Main component content
 const IconButton = (props: IProps): JSX.Element => {
 	//Main component render
 	return (
-		<ButtonSx
+		<ButtonSx id={props.id}
 			onClick={props.onClick}
 		>
 			{props.children}

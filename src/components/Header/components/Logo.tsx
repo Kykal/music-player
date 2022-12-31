@@ -9,13 +9,12 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 
-const LogoSx = styled(Link)({
+const LinkSx = styled(Link)({
+	display: 'flex',
+	alignItems: 'center',	
 	fontSize: '1.4em',
 	letterSpacing: '0.125em',
-	color: 'rgba(0, 0, 0, 0.5)',
-	display: 'flex',
-	alignItems: 'center',
-	textDecoration: 'none',
+	height: '100%',
 });
 
 
@@ -24,9 +23,11 @@ const LogoSx = styled(Link)({
 const Logo = (): JSX.Element => {
 	//Main component render
 	return (
-		<LogoSx to='/' >
-			Music Player
-		</LogoSx>
+		<div id='home-link' >
+			<LinkSx to='/'>
+				Music Player
+			</LinkSx>
+		</div>
 	);
 };
 

@@ -15,11 +15,12 @@ const Container = styled.div({
 	bottom: 0,
 	width: '100vw',
 	padding: '0.75em',
-	boxShadow: '0 -0.25em 0.25em var(--gray)',
+	boxShadow: '0 -0.25em 0.25em var(--ultra-light-gray)',
 	height: '5.5em',
 
 	display: 'grid',
 	gridTemplateColumns: 'repeat(3, 1fr)',
+	overflow: 'hidden',
 
 	'& > *': {
 		zIndex: 2,
@@ -34,6 +35,9 @@ const AudioPlayer = (): JSX.Element => {
 		<Container id='audio-player' >
 			<SongDisplay />
 			<PlayControl />
+			<div>
+				a
+			</div>
 			<audio
 				src={''}
 				

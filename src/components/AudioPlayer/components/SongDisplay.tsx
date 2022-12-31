@@ -1,6 +1,9 @@
 import React from 'react';
 
 
+//React Router Dom
+import { Link } from 'react-router-dom';
+
 
 //Styled components
 import styled from 'styled-components';
@@ -24,6 +27,31 @@ const Thumbnail = styled.div({
 	},
 });
 
+const Data = styled.div({
+	display: 'flex',
+	flexDirection: 'column',
+	flexGrow: 1,
+	height: '100%',
+	padding: '0.25em',
+	paddingLeft: '0.6em',
+	
+	'& *': {
+		'&#song-name': {
+			color: 'var(--strong-gray)',
+		},
+		'&#song-author': {
+			color: 'var(--gray)',
+			'&:': {
+				content: 'a',
+			}
+		},
+		flexGrow: 1,
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'flex-start',
+	}
+});
+
 //Main component content
 const SongDisplay = (): JSX.Element => {
 	//Main component render
@@ -35,6 +63,14 @@ const SongDisplay = (): JSX.Element => {
 					alt="thumbnail"
 				/>
 			</Thumbnail>
+			<Data id='song-data' >
+				<a href='https://pixabay.com/music/beats-mezhdunami-uncut-gems-1198/' target='_blank' rel='noopener' id='song-name' >
+					Uncut Gems
+				</a>
+				<a href='https://pixabay.com/users/mezhdunami-12153402/' target='_blank' rel='noopener' id='song-author'>
+					Mezhdunami
+				</a>
+			</Data>
 		</Container>
 	);
 };

@@ -61,7 +61,7 @@ const SearchBar = (): JSX.Element => {
 
 	//Main component render
 	return (
-		<SearchForm onSubmit={submitHandler} >
+		<SearchForm id='search-bar' onSubmit={submitHandler} >
 			<Input
 				type="text"
 

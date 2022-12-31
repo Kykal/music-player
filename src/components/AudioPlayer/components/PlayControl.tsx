@@ -36,14 +36,14 @@ const PlayControl = (): JSX.Element => {
 
 	//Main component render
 	return (
-		<Container>
-			<IconButton>
+		<Container id='song-controls' >
+			<IconButton id='backwards-button' >
 				<AiFillStepBackward
 					fontSize='1.75em'
 					color='rgba(0, 0, 0, 0.75)'
 				/>
 			</IconButton>
-			<IconButton onClick={isPlayingHandler} >
+			<IconButton id='play-pause-button' onClick={isPlayingHandler} >
 				{isPlaying ? (
 					<BiPause
 						fontSize='2.5em'
@@ -56,7 +56,7 @@ const PlayControl = (): JSX.Element => {
 					/>
 				)}
 			</IconButton>
-			<IconButton>
+			<IconButton id='forward-button' >
 				<AiFillStepForward
 					fontSize='1.75em'
 					color='rgba(0, 0, 0, 0.75)'
