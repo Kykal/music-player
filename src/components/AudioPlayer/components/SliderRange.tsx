@@ -12,6 +12,7 @@ const RangeInputSx = styled.progress({
 	border: 'none',
 	cursor: 'pointer',
 
+
 	'&:hover': {
 		height: '0.4em',
 	},
@@ -24,7 +25,7 @@ const RangeInputSx = styled.progress({
 	
 
 	//Value color
-	'&::-moz-progress-bar': {
+	'&::-moz-progress-bar, &::-webkit-progress-value': {
 		backgroundColor: 'var(--purple)',
 	},
 	'&::-webkit-progress-value': {
