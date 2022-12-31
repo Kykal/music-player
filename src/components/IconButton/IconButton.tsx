@@ -19,7 +19,7 @@ const ButtonSx = styled.button({
 		backgroundColor: 'var(--ultra-light-gray)',
 	},
 	'&:active': {
-		backgroundColor: 'rgba(0, 0, 0, 0.25)',
+		backgroundColor: 'var(--light-gray)',
 	},
 });
 

@@ -1,7 +1,8 @@
 :root {
-	--ultra-light-gray: rgba(0, 0, 0, 0.08);
 	--strong-gray: rgba(0, 0, 0, 0.75);
 	--gray: rgba(0, 0, 0, 0.5);
+	--light-gray: rgba(0, 0, 0, 0.25);
+	--ultra-light-gray: rgba(0, 0, 0, 0.08);
 }
 
 * {

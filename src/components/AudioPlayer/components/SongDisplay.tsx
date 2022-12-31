@@ -1,8 +1,8 @@
 import React from 'react';
 
 
-//React Router Dom
-import { Link } from 'react-router-dom';
+//Icons
+import { FiExternalLink } from 'react-icons/fi';
 
 
 //Styled components
@@ -34,23 +34,26 @@ const Data = styled.div({
 	height: '100%',
 	padding: '0.25em',
 	paddingLeft: '0.6em',
-	
-	'& *': {
-		'&#song-name': {
-			color: 'var(--strong-gray)',
-		},
-		'&#song-author': {
-			color: 'var(--gray)',
-			'&:': {
-				content: 'a',
-			}
-		},
-		flexGrow: 1,
-		display: 'flex',
-		alignItems: 'center',
-		justifyContent: 'flex-start',
-	}
 });
+
+
+const ParagraphSx = styled.p({
+	flexGrow: 1,
+	display: 'flex',
+	alignItems: 'center',
+	justifyContent: 'flex-start',
+
+	'& a': {
+		marginRight: '0.5em',
+	},
+	'&#song-name': {
+		color: 'var(--strong-gray)',
+	},
+	'&#song-author': {
+		color: 'var(--gray)',
+	},
+});
+
 
 //Main component content
 const SongDisplay = (): JSX.Element => {
@@ -64,12 +67,18 @@ const SongDisplay = (): JSX.Element => {
 				/>
 			</Thumbnail>
 			<Data id='song-data' >
-				<a href='https://pixabay.com/music/beats-mezhdunami-uncut-gems-1198/' target='_blank' rel='noopener' id='song-name' >
-					Uncut Gems
-				</a>
-				<a href='https://pixabay.com/users/mezhdunami-12153402/' target='_blank' rel='noopener' id='song-author'>
-					Mezhdunami
-				</a>
+				<ParagraphSx id='song-name' >
+					<a href='https://pixabay.com/music/beats-mezhdunami-uncut-gems-1198/' target='_blank' rel='noopener' >
+						Uncut Gems
+					</a>
+					<FiExternalLink />
+				</ParagraphSx>
+				<ParagraphSx id='song-author' >
+					<a href='https://pixabay.com/users/mezhdunami-12153402/' target='_blank' rel='noopener' >
+						Mezhdunami
+					</a>
+					<FiExternalLink />
+				</ParagraphSx>
 			</Data>
 		</Container>
 	);

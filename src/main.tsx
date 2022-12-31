@@ -8,7 +8,7 @@ import router from './router';
 
 
 //Global styles
-import './index.css'
+import './main.css'
 
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(

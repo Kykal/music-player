@@ -11,10 +11,12 @@ import styled from 'styled-components';
 
 const LinkSx = styled(Link)({
 	display: 'flex',
-	alignItems: 'center',	
+	alignItems: 'center',
+	justifyContent: 'flex-start',
 	fontSize: '1.4em',
 	letterSpacing: '0.125em',
 	height: '100%',
+	width: 'fit-content',
 });
 
 
