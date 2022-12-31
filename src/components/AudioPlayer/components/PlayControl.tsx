@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 
 //Icons
@@ -25,7 +25,14 @@ const Container = styled.div({
 const PlayControl = (): JSX.Element => {
 
 	//DUMMY STATE
-	const isPlaying: boolean = false;
+	const [ isPlaying, setIsPlaying ] = useState<boolean>(false);
+
+
+	//Updates play state
+	const isPlayingHandler = () => {
+		setIsPlaying( (prevState: boolean) => !prevState );
+	};
+
 
 	//Main component render
 	return (
@@ -36,15 +43,15 @@ const PlayControl = (): JSX.Element => {
 					color='rgba(0, 0, 0, 0.75)'
 				/>
 			</IconButton>
-			<IconButton>
+			<IconButton onClick={isPlayingHandler} >
 				{isPlaying ? (
 					<BiPause
-						fontSize='2em'
+						fontSize='2.5em'
 						color='rgba(0, 0, 0, 0.75)'
 					/>
 				) : (
 					<BiPlay
-						fontSize='2em'
+						fontSize='2.5em'
 						color='rgba(0, 0, 0, 0.75)'
 					/>
 				)}
