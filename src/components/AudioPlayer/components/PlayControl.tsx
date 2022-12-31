@@ -23,6 +23,10 @@ const Container = styled.div({
 
 //Main component content
 const PlayControl = (): JSX.Element => {
+
+	//DUMMY STATE
+	const isPlaying: boolean = false;
+
 	//Main component render
 	return (
 		<Container>
@@ -33,10 +37,17 @@ const PlayControl = (): JSX.Element => {
 				/>
 			</IconButton>
 			<IconButton>
-				<BiPlay
-					fontSize='2em'
-					color='rgba(0, 0, 0, 0.75)'
-				/>
+				{isPlaying ? (
+					<BiPause
+						fontSize='2em'
+						color='rgba(0, 0, 0, 0.75)'
+					/>
+				) : (
+					<BiPlay
+						fontSize='2em'
+						color='rgba(0, 0, 0, 0.75)'
+					/>
+				)}
 			</IconButton>
 			<IconButton>
 				<AiFillStepForward
