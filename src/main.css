@@ -1,0 +1,18 @@
+:root {
+	--strong-gray: rgba(0, 0, 0, 0.75);
+	--gray: rgba(0, 0, 0, 0.5);
+	--light-gray: rgba(0, 0, 0, 0.25);
+	--ultra-light-gray: rgba(0, 0, 0, 0.08);
+}
+
+* {
+	font-family: Roboto, 'Arial';
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+a, a:is(:visited, :active, :focus) {
+	text-decoration: none;
+	color: var(--gray);
+}
