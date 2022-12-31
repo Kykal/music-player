@@ -11,3 +11,11 @@ export const CURRENT_SONG_INIT: ICurrentSong = {
 		url: '',
 	},
 }
+
+export const LOCAL_CURRENT_SONG_INIT: ILocalCurrentSong = {
+	id: '',
+	url: '',
+	name: '',
+	author: '',
+	isPlaying: false,
+}
