@@ -2,7 +2,7 @@
 Listen to some royalty free music with this React web app!
 - - -
 # Content
-1. [Objective](#objectives)
+1. [Objectives](#objectives)
 2. [Challenges](#challenges)
 - - -
 # Objectives
