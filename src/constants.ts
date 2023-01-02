@@ -13,4 +13,4 @@ export const CURRENT_SONG_INIT: ICurrentSong = {
 	},
 }
 
-export const LOCAL_CURRENT_SONG_INIT: string = '';
+export const LOCAL_CURRENT_SONG_ID_INIT: string = '';

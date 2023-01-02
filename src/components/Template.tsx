@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 
 
 
@@ -6,8 +6,13 @@ import React, { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 
 
+//Context
+import CurrentSongContext from '../contexts/current-song-context';
+
+
 //Utils
-import { initLocalCurrentSong } from '../utils/localStorageUtils';
+import { initLocalCurrentSongId } from '../utils/localStorageUtils';
+
 
 //Components
 import AudioPlayer	from './AudioPlayer';
@@ -17,8 +22,11 @@ import Header				from './Header';
 //Main component content
 const Template = (): JSX.Element => {
 
+	const currentSong = useContext(CurrentSongContext);
+
 	useEffect( () => {
-		initLocalCurrentSong();
+		initLocalCurrentSongId();
+		console.log(currentSong);
 	}, [] );
 
 	//Main component render
@@ -26,7 +34,10 @@ const Template = (): JSX.Element => {
 		<>
 			<Header />
 			<Outlet />
-			<AudioPlayer />
+			{/* If there is no song playing do not show AduiPlayer */}
+			{ currentSong.id !== null ?? (
+				<AudioPlayer />
+			) }
 		</>
 	);
 };
