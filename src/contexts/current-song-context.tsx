@@ -17,7 +17,7 @@ export const CurrentSongContextProvider = (props: any): JSX.Element => {
 	const [ currentSong, setCurrentSong ] = useState<ICurrentSong>(CURRENT_SONG_INIT);
 
 	useEffect( () => {
-		//console.log( currentSong );
+		
 	}, [currentSong] );
 
 	//Set new current song

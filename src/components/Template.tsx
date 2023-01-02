@@ -26,7 +26,6 @@ const Template = (): JSX.Element => {
 
 	useEffect( () => {
 		initLocalCurrentSongId();
-		console.log(currentSong);
 	}, [] );
 
 	//Main component render
