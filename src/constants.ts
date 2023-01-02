@@ -1,5 +1,6 @@
 import ICurrentSong from "./interfaces/ICurrentSong";
-import ILocalCurrentSong from "./interfaces/ILocalCurrentSong";
+
+
 
 export const CURRENT_SONG_INIT: ICurrentSong = {
 	id: '',
@@ -12,10 +13,4 @@ export const CURRENT_SONG_INIT: ICurrentSong = {
 	},
 }
 
-export const LOCAL_CURRENT_SONG_INIT: ILocalCurrentSong = {
-	id: '',
-	url: '',
-	name: '',
-	author: '',
-	isPlaying: false,
-}
+export const LOCAL_CURRENT_SONG_INIT: string = '';
