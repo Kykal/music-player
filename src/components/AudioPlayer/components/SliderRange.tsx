@@ -12,11 +12,6 @@ const RangeInputSx = styled.progress({
 	border: 'none',
 	cursor: 'pointer',
 
-
-	'&:hover': {
-		height: '0.4em',
-	},
-
 	//Background color
 	backgroundColor: 'var(--ultra-light-gray)',
 	'&::-webkit-progress-bar': {
@@ -39,7 +34,7 @@ const SliderRange = (): JSX.Element => {
 
 	const maxSeconds = 13020;
 
-	const [ value, setValue ] = useState<number>(400);
+	const [ value, setValue ] = useState<number>(6000);
 
 	//Updates value of progress tag
 	const progressHandler = (event: MouseEvent) => {

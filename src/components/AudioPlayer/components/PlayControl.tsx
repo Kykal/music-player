@@ -7,7 +7,7 @@ import { BiPlay, BiPause } from 'react-icons/bi';
 
 
 //Components
-import IconButton	from '../../IconButton';
+import IconButton	from '../../UI/IconButton';
 
 
 //Styled components

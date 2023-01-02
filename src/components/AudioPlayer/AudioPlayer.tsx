@@ -20,6 +20,9 @@ const Container = styled.div({
 
 const AudioTrack = styled.div({
 	width: '100%',
+	'&:hover > progress': {
+		height: '0.4em',
+	},
 });
 
 
