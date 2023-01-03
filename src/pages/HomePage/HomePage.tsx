@@ -73,16 +73,16 @@ const HomePage = (): JSX.Element => {
 							<TableCell>
 								<Thumbnail
 									src={song.thumbnailUrl ?? DUMMY_THUMBNAIL_URL}
-									alt={`${song.album?.name}`}
+									alt={song.album.name!}
 
 									onClick={() => currentSong.setCurrentSongId(`${song.id}`)}
 								/>
 							</TableCell>
 							<TableCell >
-								{`${song.name}`}
+								{song.name!}
 							</TableCell>
 							<TableCell >
-								{`${song.author.name}`}
+								{song.author.name!}
 							</TableCell>
 						</TableRow>
 					) )}
