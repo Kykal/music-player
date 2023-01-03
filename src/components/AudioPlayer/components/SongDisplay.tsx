@@ -1,12 +1,17 @@
 import React, { useContext } from 'react';
 
 
+//Context
+import CurrentSongContext from '../../../contexts/CurrentSong/CurrentSongContext';
+
+
 //Icons
 import { FiExternalLink } from 'react-icons/fi';
 
 
 //Styled components
 import styled from 'styled-components';
+import { DUMMY_THUMBNAIL_URL } from '../../../constants';
 
 
 const Container = styled.div({
@@ -58,25 +63,27 @@ const ParagraphSx = styled.p({
 //Main component content
 const SongDisplay = (): JSX.Element => {
 
+	const currentSong = useContext(CurrentSongContext);
+
 	//Main component render
 	return (
 		<Container id='song-display' >
 			<Thumbnail id='song-thumbnail' >
 				<img
-					//src={currentSong.thumbnailUrl}
+					src={currentSong.thumbnailUrl || DUMMY_THUMBNAIL_URL}
 					alt="thumbnail"
 				/>
 			</Thumbnail>
 			<Data id='song-data' >
 				<ParagraphSx id='song-name' >
-					<a href={'currentSong.url'} target='_blank' rel='noopener' >
-						Nombre
+					<a href={currentSong.url} target='_blank' rel='noopener' >
+						{currentSong.name}
 					</a>
 					<FiExternalLink />
 				</ParagraphSx>
 				<ParagraphSx id='song-author' >
-					<a href={''} target='_blank' rel='noopener' >
-						Author
+					<a href={currentSong.author.url} target='_blank' rel='noopener' >
+						{currentSong.author.name}
 					</a>
 					<FiExternalLink />
 				</ParagraphSx>

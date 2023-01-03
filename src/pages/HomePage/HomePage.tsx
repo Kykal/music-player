@@ -19,6 +19,7 @@ import TableRow		from '../../components/UI/TableRow';
 
 //Styled components
 import styled from 'styled-components';
+import CurrentSongContext from '../../contexts/CurrentSong/CurrentSongContext';
 
 const Container = styled.main({
 	paddingTop: '3em',
@@ -45,6 +46,9 @@ const HomePage = (): JSX.Element => {
 
 	const [ songsList, setSongsList ] = useState([]);
 
+	const currentSong = useContext(CurrentSongContext);
+
+
 	useEffect( () => {
 		axios.get('data.json')
 			.then( (response) => {
@@ -70,6 +74,8 @@ const HomePage = (): JSX.Element => {
 								<Thumbnail
 									src={song.thumbnailUrl ?? DUMMY_THUMBNAIL_URL}
 									alt={song.album?.name}
+
+									onClick={() => currentSong.setCurrentSongId(song.id)}
 								/>
 							</TableCell>
 							<TableCell >
