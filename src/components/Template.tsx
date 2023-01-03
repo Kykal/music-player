@@ -6,10 +6,6 @@ import React, { useEffect, useContext } from 'react';
 import { Outlet } from 'react-router-dom';
 
 
-//Context
-import CurrentSongContext from '../contexts/current-song-context';
-
-
 //Utils
 import { initLocalCurrentSongId } from '../utils/localStorageUtils';
 
@@ -21,8 +17,6 @@ import Header				from './Header';
 
 //Main component content
 const Template = (): JSX.Element => {
-
-	const currentSong = useContext(CurrentSongContext);
 
 	useEffect( () => {
 		initLocalCurrentSongId();

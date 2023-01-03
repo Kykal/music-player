@@ -6,10 +6,6 @@ import axios from 'axios';
 import ISong from '../../interfaces/ISong';
 
 
-//Context
-import CurrentSongContext from '../../contexts/current-song-context';
-
-
 //Constants
 import { DUMMY_THUMBNAIL_URL } from '../../constants';
 
@@ -48,7 +44,6 @@ const Thumbnail = styled.img({
 const HomePage = (): JSX.Element => {
 
 	const [ songsList, setSongsList ] = useState([]);
-	const currentSong = useContext(CurrentSongContext);
 
 	useEffect( () => {
 		axios.get('data.json')
@@ -60,10 +55,6 @@ const HomePage = (): JSX.Element => {
 			} );
 	}, [] );
 
-
-	const onThumbnailClick = (id: string) => {
-		currentSong.setCurrentSongId(id);
-	};
 
 	//Main component render
 	return (
@@ -79,8 +70,6 @@ const HomePage = (): JSX.Element => {
 								<Thumbnail
 									src={song.thumbnailUrl ?? DUMMY_THUMBNAIL_URL}
 									alt={song.album?.name}
-
-									onClick={() => onThumbnailClick(song.id)}
 								/>
 							</TableCell>
 							<TableCell >
