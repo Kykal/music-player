@@ -19,7 +19,7 @@ const CurrentSongContextProvider = (props: { children: JSX.Element | JSX.Element
 
 	useEffect( () => {
 		( async () => {
-			const song = await getSongById(currentSong.id);
+			const song = await getSongById(`${currentSong.id}`);
 
 			setCurrentSong({...song});
 		} )()
