@@ -1,5 +1,5 @@
 import { LOCAL_CURRENT_SONG_ID_INIT } from "../constants";
-import ICurrentSong from "../interfaces/ICurrentSong";
+import ISong from "../interfaces/ISong";
 
 /**
  * Prepares localStorage to save data locally.

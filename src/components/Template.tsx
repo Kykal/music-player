@@ -34,9 +34,7 @@ const Template = (): JSX.Element => {
 			<Header />
 			<Outlet />
 			{/* If there is no song playing do not show AduiPlayer */}
-			{ currentSong.id !== null ?? (
-				<AudioPlayer />
-			) }
+			<AudioPlayer />
 		</>
 	);
 };

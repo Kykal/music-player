@@ -2,7 +2,8 @@ import React, { createContext, useState, useEffect } from 'react';
 
 //Constants
 import { CURRENT_SONG_INIT } from '../constants';
-import ICurrentSong from '../interfaces/ICurrentSong';
+import ISong from '../interfaces/ISong';
+import getSongById from '../utils/getSongById';
 
 
 
@@ -14,11 +15,29 @@ const CurrentSongContext = createContext({
 
 export const CurrentSongContextProvider = (props: any): JSX.Element => {
 
-	const [ currentSong, setCurrentSong ] = useState<ICurrentSong>(CURRENT_SONG_INIT);
+	const [ currentSong, setCurrentSong ] = useState<ISong>(CURRENT_SONG_INIT);
+
+	//If id updates update whole data
+	useEffect( () => {
+		if( currentSong.id.length === 0 )
+			return;
+
+		const fetch = async () => {
+			const song = await getSongById(currentSong.id);
+
+			setCurrentSong({
+				...song
+			});
+		}
+		fetch();
+	}, [currentSong.id] );
+
 
 	useEffect( () => {
+		if( currentSong.name.length === 0 )
+			return
 		
-	}, [currentSong] );
+	}, [ currentSong.name ] );
 
 	//Set new current song
 	const setCurrentSongIdHandler = (id: string): void => {

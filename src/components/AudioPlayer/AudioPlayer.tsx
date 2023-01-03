@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 
 
 //Components
@@ -9,6 +9,7 @@ import SliderRange	from './components/SliderRange';
 
 //Styled components
 import styled from 'styled-components';
+import CurrentSongContext from '../../contexts/current-song-context';
 
 
 const Container = styled.div({
@@ -37,6 +38,9 @@ const AudioTable = styled.div({
 
 //Main component content
 const AudioPlayer = (): JSX.Element => {
+
+	const { url } = useContext(CurrentSongContext);
+
 	//Main component render
 	return (
 		<Container id='audio-player' >
@@ -52,7 +56,7 @@ const AudioPlayer = (): JSX.Element => {
 			</AudioTable>
 			<audio
 				preload='metadata'
-				src=''
+				src={url}
 			/>
 		</Container>
 	);
