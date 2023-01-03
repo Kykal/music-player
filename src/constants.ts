@@ -1,21 +1,20 @@
-import ICurrentSong from "./interfaces/ICurrentSong";
-import ILocalCurrentSong from "./interfaces/ILocalCurrentSong";
+import ISong from "./interfaces/ISong";
 
-export const CURRENT_SONG_INIT: ICurrentSong = {
-	id: '',
-	url: '',
-	thumbnailUrl: '',
-	name: '',
+export const DUMMY_THUMBNAIL_URL = 'https://dummyimage.com/200x200/000/fff.png';
+
+export const CURRENT_SONG_INIT: ISong = {
+	id: null,
+	url: null,
+	thumbnailUrl: null,
+	name: null,
 	author: {
-		name: '',
-		url: '',
+		name: null,
+		url: null,
+	},
+	album: {
+		name: null,
+		url: null,
 	},
 }
 
-export const LOCAL_CURRENT_SONG_INIT: ILocalCurrentSong = {
-	id: '',
-	url: '',
-	name: '',
-	author: '',
-	isPlaying: false,
-}
+export const LOCAL_CURRENT_SONG_ID_INIT: string = '';

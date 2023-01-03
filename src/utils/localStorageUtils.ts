@@ -1,15 +1,14 @@
-import { LOCAL_CURRENT_SONG_INIT } from "../constants";
-import ICurrentSong from "../interfaces/ICurrentSong";
-import ILocalCurrentSong from "../interfaces/ILocalCurrentSong";
+import { LOCAL_CURRENT_SONG_ID_INIT } from "../constants";
+import ISong from "../interfaces/ISong";
 
 /**
  * Prepares localStorage to save data locally.
  */
-export const initLocalCurrentSong = (): void => {
-	if( getLocalCurrentSong() != null )
+export const initLocalCurrentSongId = (): void => {
+	if( getLocalCurrentSongId() != null )
 		return;
 
-	setLocalCurrentSong(LOCAL_CURRENT_SONG_INIT);
+	setLocalCurrentSongId(LOCAL_CURRENT_SONG_ID_INIT);
 }
 
 
@@ -17,14 +16,15 @@ export const initLocalCurrentSong = (): void => {
  * Try to get current song id.
  * @returns song id. or null
  */
-export const getLocalCurrentSong = (): ICurrentSong | null => {
-	return JSON.parse(localStorage.getItem('currentSong')!) ?? null;
+export const getLocalCurrentSongId = (): string | null => {
+	return localStorage.getItem('currentSongId') ?? null;
 }
+
 
 /**
  * Set current song id. in localStorage to save locally.
  * @param songId 
  */
-export const setLocalCurrentSong = (currentSong: ILocalCurrentSong): void => {
-	localStorage.setItem('currentSong', JSON.stringify(currentSong) );
+export const setLocalCurrentSongId = (currentSongId: string): void => {
+	localStorage.setItem('currentSongId', currentSongId );
 }
