@@ -1,6 +1,9 @@
 import React, { useEffect, useContext } from 'react';
 
 
+//Context
+import CurrentSongContext from '../contexts/CurrentSong/CurrentSongContext';
+
 
 //React Router Dom
 import { Outlet } from 'react-router-dom';
@@ -18,6 +21,8 @@ import Header				from './Header';
 //Main component content
 const Template = (): JSX.Element => {
 
+	const currentSong = useContext(CurrentSongContext);
+
 	useEffect( () => {
 		initLocalCurrentSongId();
 	}, [] );
@@ -28,7 +33,9 @@ const Template = (): JSX.Element => {
 			<Header />
 			<Outlet />
 			{/* If there is no song playing do not show AduiPlayer */}
-			<AudioPlayer />
+			{currentSong?.author?.name && (
+				<AudioPlayer />
+			)}
 		</>
 	);
 };

@@ -1,4 +1,4 @@
-import React, { useState, MouseEvent } from 'react';
+import React, { useState, MouseEvent, useContext, useEffect } from 'react';
 
 
 //Styled components
@@ -29,12 +29,26 @@ const RangeInputSx = styled.progress({
 });
 
 
+//Interfaces
+interface IProps {
+	audioSong: HTMLAudioElement | null,
+}
+
+
 //Main component content
-const SliderRange = (): JSX.Element => {
+const SliderRange = (props: IProps): JSX.Element => {
 
-	const maxSeconds = 13020;
+	const [ life, setLife ] = useState<number>(0);
 
-	const [ value, setValue ] = useState<number>(6000);
+	useEffect( () => {
+		const interval = setInterval( () => {
+			setLife(props.audioSong!.currentTime);
+		}, 1_000 );
+
+		return () => {
+			clearInterval(interval);
+		}
+	}, [props.audioSong] );
 
 	//Updates value of progress tag
 	const progressHandler = (event: MouseEvent) => {
@@ -44,16 +58,17 @@ const SliderRange = (): JSX.Element => {
 		const x: number = event.clientX;
 
 		//Relative
-		const newValue = (x * maxSeconds)/width;
+		const newValue = (x * props.audioSong!.duration)/width;
 
-		setValue(newValue);
+		setLife(newValue);
+		props.audioSong!.currentTime = newValue;
 	};
 
 	//Main component render
 	return (
 		<RangeInputSx
-			value={value}
-			max={maxSeconds}
+			value={props.audioSong?.currentTime}
+			max={`${props.audioSong?.duration}`}
 
 			onClick={progressHandler}
 		/>

@@ -7,6 +7,11 @@
 			"name": "Mezhdunami",
 			"url": "https://pixabay.com/users/mezhdunami-12153402/"
 		},
+		"duration": 135,
+		"album": {
+			"name": "Crystalized",
+			"url": null
+		},
 		"thumbnailUrl": "https://cdn.pixabay.com/audio/2022/09/19/20-13-28-716_200x200.jpg"
 	},
 	{
@@ -17,6 +22,11 @@
 			"name": "Mezhdunami",
 			"url": "https://pixabay.com/users/mezhdunami-12153402/"
 		},
+		"duration": 182,
+		"album": {
+			"name": "Flashes",
+			"url": null
+		},
 		"thumbnailUrl": "https://cdn.pixabay.com/audio/2022/09/19/20-10-55-531_200x200.jpg"
 	},
 	{
@@ -26,6 +36,11 @@
 		"author": {
 			"name": "QubeSounds",
 			"url": "https://pixabay.com/users/qubesounds-24397640/"
+		},
+		"duration": 91,
+		"album": {
+			"name": "Synopsis",
+			"url": null
 		},
 		"thumbnailUrl": null
 	}

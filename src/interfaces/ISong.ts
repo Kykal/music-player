@@ -1,14 +1,14 @@
 export default interface ISong {
-	id: string;
-	url: string;
-	name: string;
-	album?: {
-		url: string;
-		name: string;
+	id: string | null;
+	url: string | null;
+	name: string | null;
+	album: {
+		url: string | null;
+		name: string | null;
 	}
 	author: {
-		url: string;
-		name: string;
+		url: string | null;
+		name: string | null;
 	};
-	thumbnailUrl: string;
+	thumbnailUrl: string | null;
 }

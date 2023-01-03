@@ -21,8 +21,14 @@ const Container = styled.div({
 });
 
 
+//Interfaces
+interface IProps {
+	isPlaying: boolean;
+	audioPlayStopHandler: () => void;
+}
+
 //Main component content
-const PlayControl = (): JSX.Element => {
+const PlayControl = (props: IProps): JSX.Element => {
 	//Main component render
 	return (
 		<Container id='song-controls' >
@@ -35,9 +41,9 @@ const PlayControl = (): JSX.Element => {
 				/>
 			</IconButton>
 			<IconButton id='play-pause-button'
-				disabled={true}
+				onClick={props.audioPlayStopHandler}
 			>
-				{false ? (
+				{props.isPlaying ? (
 					<BiPause
 						fontSize='2.5em'
 						color='rgba(0, 0, 0, 0.75)'
