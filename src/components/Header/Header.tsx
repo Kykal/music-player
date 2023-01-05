@@ -25,9 +25,7 @@ const HeaderSx = styled.header({
 	},
 
 	'@media (max-width: 650px)': {
-		display: 'flex',
 		alignItems: 'center',
-		justifyContent: 'center',
 	},
 });
 
