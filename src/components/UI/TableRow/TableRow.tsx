@@ -5,18 +5,29 @@ import React from 'react';
 import styled from 'styled-components';
 
 
-const TableRowSx = styled.tr({
+//Interfaces
+interface IProps {
+	children: JSX.Element | JSX.Element[];
+	isActive: boolean;
+}
+
+interface IRow {
+	isActive: boolean;
+}
+
+const TableRowSx = styled.tr( (props: IRow) => ({
 	display: 'table-row',
+	background: props.isActive ? 'var(--ultra-light-gray)' : 'white',
 	'&:hover': {
 		backgroundColor: 'var(--ultra-light-gray)',
-	}
-});
+	},
+}));
 
 //Main component content
-const TableRow = (props: { children: JSX.Element | JSX.Element[] }): JSX.Element => {
+const TableRow = (props: IProps): JSX.Element => {
 	//Main component render
 	return (
-		<TableRowSx>
+		<TableRowSx isActive={props.isActive} >
 			{props.children}
 		</TableRowSx>
 	);

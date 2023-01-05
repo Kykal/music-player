@@ -76,7 +76,7 @@ const HomePage = (): JSX.Element => {
 			<Table>
 				<TableBody>
 					{songsList.map( (song: ISong, index: number) => (
-						<TableRow key={index} >
+						<TableRow key={index} isActive={currentSong.id == song.id} >
 							<TableCell>
 								<Thumbnail
 									src={song.thumbnailUrl ?? DUMMY_THUMBNAIL_URL}
