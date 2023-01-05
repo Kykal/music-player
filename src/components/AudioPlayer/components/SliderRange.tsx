@@ -3,6 +3,7 @@ import React, { useState, MouseEvent, useContext, useEffect } from 'react';
 
 //Styled components
 import styled from 'styled-components';
+import CurrentSongContext from '../../../contexts/CurrentSong/CurrentSongContext';
 
 
 const RangeInputSx = styled.progress({
@@ -38,7 +39,13 @@ interface IProps {
 //Main component content
 const SliderRange = (props: IProps): JSX.Element => {
 
+	const currentSong = useContext(CurrentSongContext);
+
 	const [ life, setLife ] = useState<number>(0);
+
+	useEffect( () => {
+		setLife(0);
+	}, [currentSong] );
 
 	useEffect( () => {
 		const interval = setInterval( () => {
@@ -67,7 +74,7 @@ const SliderRange = (props: IProps): JSX.Element => {
 	//Main component render
 	return (
 		<RangeInputSx
-			value={props.audioSong?.currentTime}
+			value={life}
 			max={`${props.audioSong?.duration}`}
 
 			onClick={progressHandler}

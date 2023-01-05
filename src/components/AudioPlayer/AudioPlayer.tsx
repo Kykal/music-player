@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, ChangeEvent } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 
 //Context
@@ -9,13 +10,15 @@ import CurrentSongContext from '../../contexts/CurrentSong/CurrentSongContext';
 interface IAudio {
 	audio: HTMLAudioElement | null;
 	isPlaying: boolean;
-	current: number,
+	current: number;
+	volume: number;
 }
 
 //Components
+import AudioControl	from './components/AudioControl';
 import PlayControl	from './components/PlayControl';
-import SongDisplay	from './components/SongDisplay';
 import SliderRange	from './components/SliderRange';
+import SongDisplay	from './components/SongDisplay';
 
 
 //Styled components
@@ -42,7 +45,7 @@ const AudioTable = styled.div({
 	padding: '0.5em',
 	height: '5em',
 	display: 'flex',
-	'& div:is(#song-display, #song-controls)': {
+	'& div:is(#song-display, #song-controls, #song-volume)': {
 		width: '33%',
 	}
 });
@@ -50,73 +53,71 @@ const AudioTable = styled.div({
 //Main component content
 const AudioPlayer = (): JSX.Element => {
 
-	const currentSong = useContext(CurrentSongContext);
-	const [ song, setSong ] = useState<IAudio>({
-		audio: null,
-		isPlaying: false,
-		current: 0,
+	const isMobile = useMediaQuery({
+		query: '(max-width: 650px)',
 	});
 
+	const currentSong = useContext(CurrentSongContext);
+	const [ playingSong, setPlayingSong ] = useState<HTMLAudioElement | null>(null);
+
+
+	//When track is now loaded
 	useEffect( () => {
-		if( !currentSong.name )
-			return;
-		
-		const uri = `music/${parseSongUri(currentSong)}.mp3`;
+		playingSong?.play();
+	}, [playingSong] );
+	
 
-		const newSong = new Audio(uri);
-		
-		song.audio?.pause();
-
-		setSong({
-			audio: newSong,
-			isPlaying: true,
-			current: 0,
-		});
-	}, [currentSong.name] );
-
+	//When new track is requested
 	useEffect( () => {
-		song.audio?.play();
-	}, [song.audio] );
-
-	//Description. What does this?
-	const audioPlayStopHandler = () => {
-		if( song.isPlaying ){
-			song.audio?.pause();
-			setSong({
-				...song,
-				isPlaying: false,
-			});
-			return;
-		}
-
-		song.audio?.play();
-		setSong({
-			...song,
-			isPlaying: true,
-		});
-	};
+		playingSong?.pause();
+		setPlayingSong(new Audio(parseSongUri(currentSong)));
+	}, [currentSong.url] );
 
 	//Main component render
 	return (
 		<Container id='audio-player' >
 			<AudioTrack>
 				<SliderRange
-					audioSong={song.audio}
+					audioSong={playingSong}
 				/>
 			</AudioTrack>
-			<AudioTable>
-				<SongDisplay />
-				<PlayControl
-					audioPlayStopHandler={audioPlayStopHandler}
-					isPlaying={song.isPlaying}
-				/>
-				<div>
-					a
-				</div>
-			</AudioTable>
+			{isMobile ? (
+				<MobileLayout />
+			) : (
+				<DesktopLayout />
+			)}
 		</Container>
 	);
 };
 
 
 export default AudioPlayer; //Export main component
+
+
+
+const MobileLayout = () => {
+	return (
+		<AudioTable>
+			<SongDisplay />
+		</AudioTable>
+	);
+}
+
+const DesktopLayout = () => {
+	return (
+		<AudioTable>
+			<SongDisplay />
+			{/*
+				<PlayControl
+					audioPlayStopHandler={audioPlayStopHandler}
+					isPlaying={playingSong?.played}
+				/>
+				<AudioControl
+					audio={song.audio!}
+					onChange={volumeHandler}
+					value={song.volume}
+				/>
+			*/}
+		</AudioTable>
+	);
+}
