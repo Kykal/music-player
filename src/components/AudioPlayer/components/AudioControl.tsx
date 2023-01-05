@@ -5,7 +5,7 @@ import React, { useState, ChangeEvent, useEffect, useContext } from 'react';
 import CurrentSongContext from '../../../contexts/CurrentSong/CurrentSongContext';
 
 //Icons
-import { HiSpeakerWave } from 'react-icons/hi2';
+import { HiSpeakerWave, HiSpeakerXMark } from 'react-icons/hi2';
 
 
 //Components
@@ -34,6 +34,7 @@ const AudioControl = ({playingSong}: IProps): JSX.Element => {
 
 	const currentSong = useContext(CurrentSongContext);
 	const [ volume, setVolume ] = useState<number>(100);
+	const [ previousVolume, setPreviousVolume ] = useState<number>(100);
 
 
 	useEffect( () => {
@@ -43,12 +44,36 @@ const AudioControl = ({playingSong}: IProps): JSX.Element => {
 		playingSong!.volume = volume/100;
 	}, [playingSong] );
 
-	//Description. What does this?
+
+	//Save previous volume value
+	useEffect( () => {
+		//Do not save when volume is 0 (muted)
+		if( volume === 0 )
+			return;
+		
+		setPreviousVolume(volume);
+	}, [volume] );
+
+
+	//Set new volume value
 	const volumeHandler = (event: ChangeEvent<HTMLInputElement>) => {
 		const newValue = parseFloat(event.target.value);
 		
 		setVolume(newValue);
 		playingSong!.volume = newValue/100;
+	};
+
+
+	//Mute or unmute song
+	const toggleVolume = () => {
+		if( volume === 0 ){
+			setVolume(previousVolume);
+			playingSong!.volume = previousVolume/100;
+			return;
+		}
+
+		setVolume(0);
+		playingSong!.volume = 0;
 	};
 
 	//Main component render
@@ -64,11 +89,18 @@ const AudioControl = ({playingSong}: IProps): JSX.Element => {
 
 				onChange={volumeHandler}
 			/>
-			<IconButton >
-				<HiSpeakerWave
-					fontSize='1.5em'
-					color='var(--strong-gray)'
-				/>
+			<IconButton onClick={toggleVolume} >
+				{volume === 0 ? (
+						<HiSpeakerXMark
+							fontSize='1.5em'
+							color='var(--strong-gray)'
+						/>
+					) : (
+						<HiSpeakerWave
+							fontSize='1.5em'
+							color='var(--strong-gray)'
+						/>
+				)}
 			</IconButton>
 		</Container>
 	);
