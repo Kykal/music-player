@@ -27,6 +27,13 @@ const Container = styled.main({
 	marginRight: '20%',
 	paddingLeft: '2em',
 	paddingRight: '2em',
+	
+	'@media screen and (max-width: 650px)': {
+		marginLeft: '0',
+		marginRight: '0',
+		paddingLeft: '0.75em',
+		paddingRight: '0.75em',
+	},
 });
 
 const SongsListTitle = styled.h4({

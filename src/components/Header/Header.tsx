@@ -1,9 +1,11 @@
 import React from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 
 //Components
 import Logo				from './components/Logo';
 import SearchBar	from './components/SearchBar';
+
 
 //Styled components
 import styled from 'styled-components';
@@ -20,19 +22,30 @@ const HeaderSx = styled.header({
 
 	'& > *':{
 		height: '100%',
-	}
+	},
+
+	'@media (max-width: 650px)': {
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
 });
 
 
 
 //Main component content
 const Header = (): JSX.Element => {
+
+	const isMobile = useMediaQuery({
+		query: '(max-width: 650px)',
+	});
+
 	//Main component render
 	return (
 		<HeaderSx>
-			<Logo />
+			{!isMobile && <Logo />}
 			<SearchBar />
-			<div />
+			{!isMobile && <div />}
 		</HeaderSx>
 	);
 };
