@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 
 
 //Icons
@@ -12,6 +12,7 @@ import IconButton	from '../../UI/IconButton';
 
 //Styled components
 import styled			from 'styled-components';
+import CurrentSongContext from '../../../contexts/CurrentSong/CurrentSongContext';
 
 
 const Container = styled.div({
@@ -23,12 +24,32 @@ const Container = styled.div({
 
 //Interfaces
 interface IProps {
-	isPlaying: boolean;
-	audioPlayStopHandler: () => void;
+	playingSong: HTMLAudioElement | null;
 }
 
 //Main component content
-const PlayControl = (props: IProps): JSX.Element => {
+const PlayControl = ({playingSong}: IProps): JSX.Element => {
+
+	const currentSong = useContext(CurrentSongContext);
+
+	const [ isPlaying, setIsPlaying ] = useState<boolean>(true);
+
+	useEffect( () => {
+		setIsPlaying(true);
+	}, [currentSong] );
+
+	//Description. What does this?
+	const toggleAudio = () => {
+		if( isPlaying ){
+			playingSong?.pause();
+			setIsPlaying(false);
+			return;
+		}	
+
+		playingSong?.play();
+		setIsPlaying(true);
+	};
+
 	//Main component render
 	return (
 		<Container id='song-controls' >
@@ -41,9 +62,9 @@ const PlayControl = (props: IProps): JSX.Element => {
 				/>
 			</IconButton>
 			<IconButton id='play-pause-button'
-				onClick={props.audioPlayStopHandler}
+				onClick={toggleAudio}
 			>
-				{props.isPlaying ? (
+				{isPlaying ? (
 					<BiPause
 						fontSize='2.5em'
 						color='rgba(0, 0, 0, 0.75)'

@@ -8,10 +8,7 @@ import CurrentSongContext from '../../contexts/CurrentSong/CurrentSongContext';
 
 //Interfaces
 interface IAudio {
-	audio: HTMLAudioElement | null;
-	isPlaying: boolean;
-	current: number;
-	volume: number;
+	playingSong: HTMLAudioElement | null;
 }
 
 //Components
@@ -82,9 +79,13 @@ const AudioPlayer = (): JSX.Element => {
 				/>
 			</AudioTrack>
 			{isMobile ? (
-				<MobileLayout />
+				<MobileLayout
+					playingSong={playingSong}
+				/>
 			) : (
-				<DesktopLayout />
+				<DesktopLayout
+					playingSong={playingSong}
+				/>
 			)}
 		</Container>
 	);
@@ -95,23 +96,14 @@ export default AudioPlayer; //Export main component
 
 
 
-const MobileLayout = () => {
+const DesktopLayout = ({playingSong}: IAudio) => {
 	return (
 		<AudioTable>
 			<SongDisplay />
-		</AudioTable>
-	);
-}
-
-const DesktopLayout = () => {
-	return (
-		<AudioTable>
-			<SongDisplay />
-			{/*
 				<PlayControl
-					audioPlayStopHandler={audioPlayStopHandler}
-					isPlaying={playingSong?.played}
+					playingSong={playingSong}
 				/>
+				{/*
 				<AudioControl
 					audio={song.audio!}
 					onChange={volumeHandler}
@@ -121,3 +113,13 @@ const DesktopLayout = () => {
 		</AudioTable>
 	);
 }
+
+
+const MobileLayout = (props: IAudio) => {
+	return (
+		<AudioTable>
+			<SongDisplay />
+		</AudioTable>
+	);
+}
+
