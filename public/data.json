@@ -43,5 +43,20 @@
 			"url": null
 		},
 		"thumbnailUrl": null
+	},
+	{
+		"id": "110045",
+		"url": "https://pixabay.com/music/synthwave-synthwave-80s-110045/",
+		"name": "Synthwave 80s",
+		"author": {
+			"name": "AlexiAction",
+			"url": "https://pixabay.com/users/alexiaction-26977400/"
+		},
+		"duration": 140,
+		"album": {
+			"name": "Spirit of the 80's",
+			"url": null
+		},
+		"thumbnailUrl": "https://cdn.pixabay.com/audio/2022/04/25/04-59-00-963_200x200.jpg"
 	}
 ]
