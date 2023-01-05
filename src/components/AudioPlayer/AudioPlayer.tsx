@@ -103,13 +103,9 @@ const DesktopLayout = ({playingSong}: IAudio) => {
 				<PlayControl
 					playingSong={playingSong}
 				/>
-				{/*
 				<AudioControl
-					audio={song.audio!}
-					onChange={volumeHandler}
-					value={song.volume}
+					playingSong={playingSong}
 				/>
-			*/}
 		</AudioTable>
 	);
 }

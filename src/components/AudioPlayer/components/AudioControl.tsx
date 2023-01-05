@@ -1,9 +1,12 @@
-import React, { useState, ChangeEvent, useEffect } from 'react';
+import React, { useState, ChangeEvent, useEffect, useContext } from 'react';
 
 
+//Context
+import CurrentSongContext from '../../../contexts/CurrentSong/CurrentSongContext';
 
 //Icons
 import { HiSpeakerWave } from 'react-icons/hi2';
+
 
 //Components
 import IconButton from '../../UI/IconButton';
@@ -21,17 +24,32 @@ const Container = styled.div({
 
 //Interfaces
 interface IProps {
-	audio: HTMLAudioElement | null;
-	value: number;
-	onChange: (newValue: ChangeEvent<HTMLInputElement>) => void;
+	playingSong: HTMLAudioElement | null;
 }
 
 
 //Main component content
-const AudioControl = (props: IProps): JSX.Element | null => {
+const AudioControl = ({playingSong}: IProps): JSX.Element => {
 
-	if (props.audio === null)
-		return null;
+
+	const currentSong = useContext(CurrentSongContext);
+	const [ volume, setVolume ] = useState<number>(100);
+
+
+	useEffect( () => {
+		if( !playingSong )
+			return;
+
+		playingSong!.volume = volume/100;
+	}, [playingSong] );
+
+	//Description. What does this?
+	const volumeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+		const newValue = parseFloat(event.target.value);
+		
+		setVolume(newValue);
+		playingSong!.volume = newValue/100;
+	};
 
 	//Main component render
 	return (
@@ -39,12 +57,12 @@ const AudioControl = (props: IProps): JSX.Element | null => {
 			<input
 				type="range"
 
-				value={props.value}
+				value={volume}
 
 				min={0}
 				max={100}
 
-				onChange={props.onChange}
+				onChange={volumeHandler}
 			/>
 			<IconButton >
 				<HiSpeakerWave
