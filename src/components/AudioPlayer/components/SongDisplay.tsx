@@ -76,13 +76,13 @@ const SongDisplay = (): JSX.Element => {
 			</Thumbnail>
 			<Data id='song-data' >
 				<ParagraphSx id='song-name' >
-					<a href={`${currentSong.url}`} target='_blank' rel='noopener' >
+					<a href={currentSong.url!} target='_blank' rel='noopener' >
 						{currentSong.name}
 					</a>
 					<FiExternalLink />
 				</ParagraphSx>
 				<ParagraphSx id='song-author' >
-					<a href={`${currentSong.author.url}`} target='_blank' rel='noopener' >
+					<a href={currentSong.author.url!} target='_blank' rel='noopener' >
 						{currentSong.author.name}
 					</a>
 					<FiExternalLink />

@@ -27,6 +27,13 @@ const Container = styled.main({
 	marginRight: '20%',
 	paddingLeft: '2em',
 	paddingRight: '2em',
+	
+	'@media screen and (max-width: 650px)': {
+		marginLeft: '0',
+		marginRight: '0',
+		paddingLeft: '0.75em',
+		paddingRight: '0.75em',
+	},
 });
 
 const SongsListTitle = styled.h4({
@@ -73,16 +80,16 @@ const HomePage = (): JSX.Element => {
 							<TableCell>
 								<Thumbnail
 									src={song.thumbnailUrl ?? DUMMY_THUMBNAIL_URL}
-									alt={`${song.album?.name}`}
+									alt={song.album.name!}
 
 									onClick={() => currentSong.setCurrentSongId(`${song.id}`)}
 								/>
 							</TableCell>
 							<TableCell >
-								{`${song.name}`}
+								{song.name!}
 							</TableCell>
 							<TableCell >
-								{`${song.author.name}`}
+								{song.author.name!}
 							</TableCell>
 						</TableRow>
 					) )}

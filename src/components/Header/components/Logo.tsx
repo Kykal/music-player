@@ -9,6 +9,10 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 
+const Container = styled.div({
+	gridColumn: '1/2',
+});
+
 const LinkSx = styled(Link)({
 	display: 'flex',
 	alignItems: 'center',
@@ -25,11 +29,11 @@ const LinkSx = styled(Link)({
 const Logo = (): JSX.Element => {
 	//Main component render
 	return (
-		<div id='home-link' >
+		<Container id='home-link' >
 			<LinkSx to='/'>
 				Music Player
 			</LinkSx>
-		</div>
+		</Container>
 	);
 };
 

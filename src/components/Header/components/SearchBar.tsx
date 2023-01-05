@@ -14,6 +14,9 @@ const SearchForm = styled.form({
 	display: 'flex',
 	alignItems: 'center',
 	justifyContent: 'center',
+
+
+	gridColumn: '2/3',
 });
 
 const Input = styled.input({
