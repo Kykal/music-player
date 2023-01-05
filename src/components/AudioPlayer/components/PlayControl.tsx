@@ -1,18 +1,21 @@
 import React, { useState, useContext, useEffect } from 'react';
 
 
+//Context
+import CurrentSongContext from '../../../contexts/CurrentSong/CurrentSongContext';
+
+
 //Icons
 import { AiFillStepBackward, AiFillStepForward } from 'react-icons/ai';
-import { BiPlay, BiPause } from 'react-icons/bi';
 
 
 //Components
 import IconButton	from '../../UI/IconButton';
+import ToggleControl from './ToggleControl';
 
 
 //Styled components
 import styled			from 'styled-components';
-import CurrentSongContext from '../../../contexts/CurrentSong/CurrentSongContext';
 
 
 const Container = styled.div({
@@ -53,37 +56,10 @@ const PlayControl = ({playingSong}: IProps): JSX.Element => {
 	//Main component render
 	return (
 		<Container id='song-controls' >
-			<IconButton id='backwards-button'
-				disabled={true}
-			>
-				<AiFillStepBackward
-					fontSize='1.75em'
-					color='rgba(0, 0, 0, 0.75)'
-				/>
-			</IconButton>
-			<IconButton id='play-pause-button'
-				onClick={toggleAudio}
-			>
-				{isPlaying ? (
-					<BiPause
-						fontSize='2.5em'
-						color='rgba(0, 0, 0, 0.75)'
-					/>
-				) : (
-					<BiPlay
-						fontSize='2.5em'
-						color='rgba(0, 0, 0, 0.75)'
-					/>
-				)}
-			</IconButton>
-			<IconButton id='forward-button'
-				disabled={true}
-			>
-				<AiFillStepForward
-					fontSize='1.75em'
-					color='rgba(0, 0, 0, 0.75)'
-				/>
-			</IconButton>
+			<ToggleControl
+				isPlaying={isPlaying}
+				toggleAudio={toggleAudio}
+			/>
 		</Container>
 	);
 };

@@ -44,6 +44,17 @@ const AudioTable = styled.div({
 	display: 'flex',
 	'& div:is(#song-display, #song-controls, #song-volume)': {
 		width: '33%',
+	},
+
+
+	'@media (max-width: 650px)': {
+		'& div#song-display': {
+			width: '70%',
+		},
+		'& div#song-controls': {
+			width: '30%',
+			justifyContent: 'flex-end',
+		},
 	}
 });
 
@@ -111,11 +122,13 @@ const DesktopLayout = ({playingSong}: IAudio) => {
 }
 
 
-const MobileLayout = (props: IAudio) => {
+const MobileLayout = ({playingSong}: IAudio) => {
 	return (
 		<AudioTable>
 			<SongDisplay />
+			<PlayControl
+				playingSong={playingSong}
+			/>
 		</AudioTable>
 	);
 }
-
